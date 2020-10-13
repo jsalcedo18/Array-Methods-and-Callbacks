@@ -27,14 +27,28 @@ console.log(`${accessData[0]["Away Team Name"]}${" made "}${accessData[0]["Away 
 console.log(`${"At the end of the 2014 World Cup Finals "}${accessData[0]["Win conditions"]}`);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
+/* Task 2: 
+Instructions- Create a function called  getFinals that takes `data` as an argument 
+               and returns an array of objects with only finals data */
 
-function getFinals(/* code here */) {
+let getFinals = fifaData.filter ((data) =>{
+    return data.Stage === "Final"
+})
+console.log(getFinals);
 
-    /* code here */
 
-};
+/* Web 36: Solved Like:
 
+  function getFinals(data) {
+	const allFinals = data.filter(function(item){
+		return item.Stage === 'Final';
+	});
+	return allFinals;
+}
+
+console.log(getFinals(fifaData)); */
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Task 3: Implement a higher-order function called `getYears` that accepts the callback function `getFinals`, and returns an array called `years` containing all of the years in the dataset */
 
 function getYears(/* code here */) {
