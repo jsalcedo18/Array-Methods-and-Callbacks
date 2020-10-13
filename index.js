@@ -3,16 +3,30 @@ console.log(fifaData);
 
 console.log('its working');
 // ⚽️ M  V P ⚽️ //
- 
-/* Task 1: Investigate the data above. Practice accessing data by console.log-ing the following pieces of data 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* Task 1: Investigate the data above. Practice accessing data by console.log-ing the following pieces of data*/
 
-(a) Home Team name for 2014 world cup final
-(b) Away Team name for 2014 world cup final
-(c) Home Team goals for 2014 world cup final
-(d) Away Team goals for 2014 world cup final
-(e) Winner of 2014 world cup final */
+const accessData = fifaData.filter((item)=>{
+    return item.Year === 2014 && item.Stage === "Final";
+})
 
+/*(a) Home Team name for 2014 world cup final*** year = 2014 & stage = final****/
+console.log(accessData[0]);
+console.log(`${accessData[0]["Home Team Name"]}${" is the Home Team of the 2014 World Cup Final"}`);
 
+/*(b) Away Team name for 2014 world cup final*/
+console.log(`${accessData[0]["Away Team Name"]}${" is the Away Team of the 2014 World Cup Final"}`);
+
+/*(c) Home Team goals for 2014 world cup final*/
+console.log(`${accessData[0]["Home Team Name"]}${" made "}${accessData[0]["Home Team Goals"]}${" goal(s) in the 2014 World Cup Finals"}`);
+
+/*(d) Away Team goals for 2014 world cup final*/
+console.log(`${accessData[0]["Away Team Name"]}${" made "}${accessData[0]["Away Team Goals"]}${" goal(s) in the 2014 World Cup Finals"}`);
+
+/*(e) Winner of 2014 world cup final */
+console.log(`${"At the end of the 2014 World Cup Finals "}${accessData[0]["Win conditions"]}`);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of objects with only finals data */
 
 function getFinals(/* code here */) {
