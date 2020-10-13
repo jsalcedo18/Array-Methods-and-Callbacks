@@ -133,19 +133,48 @@ function getWinners(data, getFinalsCB) {
 console.log (getWinners(fifaData, getFinals)); */
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/* Task 5: Implement a higher-order function called `getWinnersByYear` that accepts the following parameters and returns a set of strings "In {year}, {country} won the world cup!" 
+/* Task 5: 
+Instructions: 1. Implement a higher-order function called `getWinnersByYear` 
+              2. that accepts the following parameters 
+              3. and returns a set of strings "In {year}, {country} won the world cup!" 
 
 Parameters: 
  * callback function getWinners
  * callback function getYears
  */
 
-function getWinnersByYear(/* code here */) {
-
+function getWinnersByYear(winnersCB, yearsCB) {
+	let winners = winnersCB(fifaData, getFinals);
+    let years = yearsCB(fifaData, getFinals);
+    
+	let yearlyWinners = [];  // Pushing to an empty array
+	
+	winners.forEach(function(country, index){
+		yearlyWinners.push(`In ${years[index]}, ${country} won the world cup!`)
+	})
+	return yearlyWinners;
 };
 
-getWinnersByYear();
+console.log(getWinnersByYear(getWinners, getYears));
 
+/* Web 36: Solved Like:
+
+function getWinnersByYear (getWinnersCB, getYearsCB) {
+	let winners = getWinnersCB(fifaData, getFinals);
+		console.log(winners);
+	let years = getYearsCB(fifaData, getFinals);
+	let yearlyWinners = [];
+	
+	winners.forEach(function(item, index){
+		yearlyWinners.push(`in ${years[index]}, ${item} won the world cup!`)
+	})
+	console.log(winners)
+	return yearlyWinners;
+};
+
+Console.log(getWinnersByYear(getWinners, getYears)); */
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Task 6: Write a function called `getAverageGoals` that accepts a parameter `data` and returns the the average number of home team goals and away team goals scored per match (Hint: use .reduce and do this in 2 steps) */
 
 function getAverageGoals(/* code here */) {
@@ -156,6 +185,22 @@ function getAverageGoals(/* code here */) {
 
 getAverageGoals();
 
+/* Web 36: Solved Like:
+
+function getAverageGoals(data) {
+	const averageHomeGoals = data.reduce(function(acc, item) {
+		return acc + item['Home Team Goals'];
+	},0)
+	const averageAwayGoals = data.reduce(function(acc, item) {
+		return acc + item['Away Team Goals'];
+	},0)
+	
+	return `Home Team Average: ${averageHomeGoals / data.length}, Away Team Average: ${averageAwayGoals / data.length}`;
+};
+
+console.log(getAverageGoals(fifaData)); */
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// STRETCH 🥅 //
 
 /* Stretch 1: Create a function called `getCountryWins` that takes the parameters `data` and `team initials` and returns the number of world cup wins that country has had. 
