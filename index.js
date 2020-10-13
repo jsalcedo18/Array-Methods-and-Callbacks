@@ -49,16 +49,31 @@ console.log(getFinals);
 console.log(getFinals(fifaData)); */
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/* Task 3: Implement a higher-order function called `getYears` that accepts the callback function `getFinals`, and returns an array called `years` containing all of the years in the dataset */
+/* Task 3: 
+Instructions- 1.Implement a higher-order function called `getYears` (Below)
+              2.that accepts the callback function `getFinals` (Above in Task 2).... getFinals.map
+              3.and returns an array called `years` ..... let years = ^^^
+              ***containing all of the years in the dataset (Create empty array OR .map bc it creates an array)*/ 
 
-function getYears(/* code here */) {
-
-    /* code here */
-
+function getYears(data, years) {
+	return years.map(function(item){
+		return item.Year;
+	})
 };
 
-getYears();
+console.log(getYears(fifaData, getFinals));
 
+/* Web 36: Solved Like:
+
+function getYears(data, getFinalsCB) {
+	return getFinalsCB(data).map(function(item) {
+		return item.Year;
+	}
+};
+
+console.log(getYears(fifaData, getFinals)); */
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Task 4: Implement a higher-order function called `getWinners`, that accepts the callback function `getFinals()` and determine the winner (home or away) of each `finals` game. Return the name of all winning countries in an array called `winners` */ 
 
 function getWinners(/* code here */) {
