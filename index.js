@@ -74,16 +74,65 @@ function getYears(data, getFinalsCB) {
 console.log(getYears(fifaData, getFinals)); */
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/* Task 4: Implement a higher-order function called `getWinners`, that accepts the callback function `getFinals()` and determine the winner (home or away) of each `finals` game. Return the name of all winning countries in an array called `winners` */ 
+/* Task 4: 
+Instructions: 1. Implement a higher-order function called `getWinners` (Below) ✔
+              2. that accepts the callback function `getFinals()` (Function from task 2- looping thru this function) ✔
+              3. and determine the winner (home or away) of each `finals` game. (.forEach)
+              4. Return the name of all winning countries in an array called `winners` (create a new array, .push)
 
-function getWinners(/* code here */) {
+Guided Practice Notes:
+let string=" ";
+function howBigTall(hero, ind){
+	string += `${hero.name} has an index position of ${ind}, weighs ${hero.weight} lbs, and is ${hero.height} inches tall /n`;   
+}
+heroData.forEach(howBigTall);
+console.log(string);
 
-    /* code here */
+OR
 
+heroData.forEach(function(hero, ind){
+	console.log("Hero at index # + ind + " - Name: " + hero.name + " | weapon " + hero.weapon);
+})
+*/ 
+
+function getWinners(item, task2) {
+
+let winners = [];
+
+    task2.forEach((item)=>{
+        if(item['Home Team Goals'] > item['Away Team Goals']){
+            return winners.unshift(item['Home Team Name']);
+        }else if(item['Away Team Goals'] > item['Home Team Goals']){
+            return winners.push(item['Away Team Name']);
+        }else{
+            return winners.push(item['Win conditions']);
+        }
+    })
+    return winners;
 };
 
-getWinners();
+console.log(getWinners(fifaData, getFinals));
 
+/* Web 36: Solved Like:
+
+function getWinners(data, getFinalsCB) {
+	let winners = [];
+	
+	getFinalsCB.forEach(function(item){
+		if(item['Home Team Goals'] > item['Away Team Goals']) {
+			item['Home Team Name'];
+		} else if(item['Away Team Goals'] > item['Home Team Goals']){
+			winners.push(item['Away Team Name']);
+		}else if(item['Home Team Goals'] === item['Away Team Goals']){
+			winners.push(item['Win conditions']);
+		}
+	});
+	return winners;
+}
+
+console.log (getWinners(fifaData, getFinals)); */
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Task 5: Implement a higher-order function called `getWinnersByYear` that accepts the following parameters and returns a set of strings "In {year}, {country} won the world cup!" 
 
 Parameters: 
